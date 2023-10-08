@@ -29,8 +29,8 @@ class Program
         string prompt = "";
         do{
             Console.Write("Enter action: ");
-        int number = Convert.ToInt32(Console.ReadLine());
-        if (number == 1){
+        string action = Console.ReadLine();
+        if (action == "1"){
             prompt = "You chose to create a new entry.";
             Console.WriteLine(prompt);
             Console.WriteLine();
@@ -47,11 +47,13 @@ class Program
             string _ = Console.ReadLine();
 
         }
-        else if (number == 2){
+        else if (action == "2"){
              prompt = "Select an entry";
                         eesMyJournal.DisplayJournal();
+            Console.Write("Press enter to continue: ");
+            string _ = Console.ReadLine();
         }
-        else if (number == 3){
+        else if (action == "3"){
             prompt = "You chose to save your journal entry.";
             Console.WriteLine(prompt);
             Console.WriteLine();
@@ -63,7 +65,7 @@ class Program
             if (eesUserFile.EndsWith(".txt") || eesUserFile.EndsWith(".csv")){
             EesSaveFile(eesUserFile, eesMyJournal);
             Console.WriteLine();
-            Console.Write("Your Journal has been saved");
+            Console.WriteLine("Your Journal has been saved");
             Console.Write("Press enter to continue: ");
             string _ = Console.ReadLine();
             eesSaved = true;
@@ -73,7 +75,7 @@ class Program
             }
             }while (eesSaved == false);
         }
-        else if (number == 4){
+        else if (action == "4"){
             prompt = "You chose to load a file";
             Console.WriteLine(prompt);
             Console.WriteLine();
@@ -84,9 +86,9 @@ class Program
             Boolean eesCorrectChoice = true;
             do {
                 Console.WriteLine("Which option would you like to choose?");
-                int eesLoadChoice = Convert.ToInt32(Console.ReadLine());
+                string eesLoadChoice = Console.ReadLine();
 
-                if (eesLoadChoice == 1){
+                if (eesLoadChoice == "1"){
                     Console.WriteLine("Which file do you wish to load entries from? (include file extension): ");
                     string lhFilePath = Console.ReadLine();
                     LhSelectEntry(lhFilePath);
@@ -95,7 +97,7 @@ class Program
                     string _ = Console.ReadLine();
                     eesCorrectChoice = true;
                 }
-                else if (eesLoadChoice == 2){
+                else if (eesLoadChoice == "2"){
                     Console.WriteLine("Please follow these instructions:");
                     Console.Write("Which file do you wish to load entries from? (include file extension): ");
                     string khFileName = Console.ReadLine();
@@ -119,8 +121,15 @@ class Program
             }while (eesCorrectChoice == false);
 
         }
-        else if (number == 5){
+        else if (action == "5"){
             prompt = "Exit this program";
+        }
+        else {
+            Console.WriteLine();
+            Console.WriteLine("The character you've entered doesn't coorrespond with an action. Try again.");
+            Console.Write("Press enter to continue: ");
+            string _ = Console.ReadLine();
+            Console.WriteLine();
         }
         }
         while (prompt == "");
