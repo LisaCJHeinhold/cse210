@@ -20,22 +20,18 @@ class Breathing : Activity
     {
         base.StartingMessage();
         //Logic
-        bool LhDuration = base.SetDuration();
+        base.SetDuration();
         SetPause();
-        // int i = 0;
-        // Set the flag to true before entering the loop
+        // Set running to true before entering the loop
         running = true;
         do
         {
-            // Console.WriteLine(i);
-            // i++;
-            // Thread.Sleep(1000);
             Console.WriteLine($"{_LhBreathIn}...");
             //Add a count down for their circular breathing
             CountDown();
             Console.WriteLine($"{_LhBreathOut}...");
             CountDown();
-        } while (running); // Check the flag instead of LhDuration
+        } while (running);
     }
     public void EndBreathingActivity()
     {
@@ -56,7 +52,7 @@ class Breathing : Activity
         for (int i = _LhPause; i > 0; i--)
         {
             Console.WriteLine($"{i}");
-            Thread.Sleep(1000);//pause for 1 second
+            Thread.Sleep(1000);
         }
     }
 

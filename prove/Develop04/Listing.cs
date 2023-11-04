@@ -25,7 +25,7 @@ class Listing : Activity
     public void RunListingActivty()
     {
         base.StartingMessage();
-        bool LhDuration = base.SetDuration();
+        base.SetDuration();
         int i = GetRandomNumber(4);
         // Create a StringBuilder object to store the user input
         StringBuilder LhString = new StringBuilder();
