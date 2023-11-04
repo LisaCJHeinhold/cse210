@@ -32,15 +32,28 @@ class Reflection : Activity
     //this should be used to run the reflection activity in the runActivity in activty class
     public void RunReflectionActivty()
     {
-        base.RunActivity();
-        int i = GetRandomNumber(3);
+        base.StartingMessage();
+        bool LhDuration = base.SetDuration();
         //Logic
-       Console.WriteLine($"Prompt: {_LhActivityPrompt[i]}");
-
-       foreach (string question in _LhQuestions)
+        running = true;
+        do
         {
-            Console.WriteLine(question);
-            Thread.Sleep(2000);
-        }
+            int i = GetRandomNumber(3);
+            Console.WriteLine($"Prompt: {_LhActivityPrompt[i]}");
+            // base.RunAnimation(20);
+            Console.WriteLine("Press enter to continue");
+            Console.ReadLine();
+            foreach (string question in _LhQuestions)
+                {
+                    Console.WriteLine(question);
+                    // base.RunAnimation(15);
+                    Console.WriteLine("Press enter to continue");
+                    Console.ReadLine();
+                }
+        } while (running);
+    }
+    public void EndReflectionActivity()
+    {
+        base.EndingMessage();
     }
 }

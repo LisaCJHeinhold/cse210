@@ -18,13 +18,28 @@ class Breathing : Activity
     //this should be used to run the breathing activity in the runActivity in activty class
     public void RunBreathingActivty()
     {
-        base.RunActivity();
+        base.StartingMessage();
         //Logic
-        Console.WriteLine($"{_LhBreathIn}...");
-        //Add a count down for their circular breathing
-        CountDown();
-        Console.WriteLine($"{_LhBreathOut}...");
-        CountDown();
+        bool LhDuration = base.SetDuration();
+        SetPause();
+        // int i = 0;
+        // Set the flag to true before entering the loop
+        running = true;
+        do
+        {
+            // Console.WriteLine(i);
+            // i++;
+            // Thread.Sleep(1000);
+            Console.WriteLine($"{_LhBreathIn}...");
+            //Add a count down for their circular breathing
+            CountDown();
+            Console.WriteLine($"{_LhBreathOut}...");
+            CountDown();
+        } while (running); // Check the flag instead of LhDuration
+    }
+    public void EndBreathingActivity()
+    {
+        base.EndingMessage();
     }
 
     //this acks the user how long they want their breathing circulations to be and returns that number and sets it to _LhPause which is an attribute

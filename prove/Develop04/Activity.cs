@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.Design;
 using System.Collections.Generic;
 using System.Threading;
+using System.Timers;
 
 class Activity 
 {
@@ -47,67 +48,100 @@ class Activity
     // {
     //     return _LhActivityAnimation;
     // }
-    public void RunActivity()
-    {
-        // bool LhDuration = SetDuration();
-        StartingMessage();
-        // if (_LhActivityPrompt != null){
-        //     Console.WriteLine("Here is your prompt:");
-        // }
-        // while(LhDuration == true)
-        // {
-        //     //activty loop
-        // }
-        //logic for activities that could call each activity
-        EndingMessage();
-    }
+    // public void RunActivityLogic() 
+    // {
+    //     if (_LhActivityName == "Breathing")
+    //     {
+
+    //     } else if (_LhActivityName == "Reflection")
+    //     {
+
+    //     } else if (_LhActivityName == "Listing")
+    //     {
+
+    //     }
+    // }
+
+    // public void RunActivity()
+    // {
+    //     StartingMessage();
+    //     // bool LhDuration = SetDuration();
+    //     // if (_LhActivityPrompt != null){
+    //     //     Console.WriteLine("Here is your prompt:");
+    //     // }
+    //     // while(LhDuration == true)
+    //     // {
+    //     //     RunActivityLogic();
+           
+    //     // }
+    //     //logic for activities that could call each activity
+    //     EndingMessage();
+    // }
 
     //Starting method that need to run at the beginning of each specified activity
     public void StartingMessage()
     {
+        Console.Clear();
         Console.WriteLine($"Let's start {_LhActivityName}.");
         Console.WriteLine($" {_LhActivityDescription}");
-        SetDuration();
+        // SetDuration();
+        Console.Clear();
         Console.WriteLine("Get ready to begin...");
-        RunAnimation(10);
+        RunAnimation(5);
     }
 
     //ending message that should run at the end of each specified activity
     public void EndingMessage()
     {
         Console.WriteLine($"Good job! You've completed {_LhActivityName}");
-        RunAnimation(10);
+        RunAnimation(5);
         Console.WriteLine("Done.");
     }
 
     //sets the duration for the practice session, this should be set up in a while loop for each run activity in the program class (while SetDuration is true continue running the activity loop, while it is false end the activity)
-    public bool SetDuration()
+public bool SetDuration()
+{
+    Console.Write("How long would you like to practice this activity? (Minutes): ");
+    int LhTimeInput = int.Parse(Console.ReadLine());
+    // int LhDuration = LhTimeInput * 60;
+    var LhStartTime = DateTime.UtcNow;
+
+    // Use TimeSpan.FromMinutes to convert the user input to seconds
+    TimeSpan LhDuration = TimeSpan.FromMinutes(LhTimeInput);
+    bool LhDurationBool;
+
+    // Create a timer with the user input as the interval
+    System.Timers.Timer timer = new System.Timers.Timer(LhDuration.TotalMilliseconds); // Change the type of the timer
+    // Add an event handler to the timer
+    timer.Elapsed += Timer_Elapsed;
+    // Start the timer
+    timer.Enabled = true;
+
+    // Use a condition to check if the current time is less than the start time plus the duration
+    if (LhStartTime < LhStartTime + LhDuration)
     {
-        Console.Write("How long would you like to practice this activity? (Minutes): ");
-        int LhTimeInput = int.Parse(Console.ReadLine());
-        // int LhDuration = LhTimeInput * 60;
-        var LhStartTime = DateTime.UtcNow;
-
-        // Use TimeSpan.FromMinutes to convert the user input to seconds
-        TimeSpan LhDuration = TimeSpan.FromMinutes(LhTimeInput);
-        bool LhDurationBool;
-
-        // Use a condition to check if the current time is less than the start time plus the duration
-        if (DateTime.UtcNow < LhStartTime + LhDuration)
-        {
-            LhDurationBool = true;
-            return LhDurationBool;
-        } else
-        {
-            LhDurationBool = false;
-            return LhDurationBool;
-        }
-
-        //now i should be able to call this as a while loop so that while SetDuration() == True continue looping through the activity.
+        LhDurationBool = true;
+        return LhDurationBool;
     }
+    else
+    {
+        LhDurationBool = false;
+        return LhDurationBool;
+    }
+}
+
+// Define a flag variable to control the loop
+protected bool running;
+
+// Define the event handler for the timer
+private void Timer_Elapsed(object sender, ElapsedEventArgs e)
+{
+    // Set the flag to false when the timer expires
+    running = false;
+}
     
     //this creates the animation that will run at the beginning and end of all the activitys
-    static void RunAnimation(int time)
+    public void RunAnimation(int time)
     {
         // for {int i = 5; i > 0; i--}
         // {
@@ -133,7 +167,7 @@ class Activity
         {
             string s = animationStrings[i];
             Console.Write(s);
-            Thread.Sleep(1000);
+            Thread.Sleep(100);
             Console.Write("\b \b");
             
             i++;

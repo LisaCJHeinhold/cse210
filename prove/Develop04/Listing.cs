@@ -1,5 +1,6 @@
 using System;
 using System.Runtime.InteropServices;
+using System.Text;
 
 class Listing : Activity
 {
@@ -23,16 +24,29 @@ class Listing : Activity
     //this should be used to run the listing activity in the runActivity in activty class
     public void RunListingActivty()
     {
-        base.RunActivity();
+        base.StartingMessage();
+        bool LhDuration = base.SetDuration();
         int i = GetRandomNumber(4);
+        // Create a StringBuilder object to store the user input
+        StringBuilder LhString = new StringBuilder();
         //Logic
+        running = true;
         Console.WriteLine($"Prompt: {_LhActivityPrompt[i]}");
         Console.WriteLine("You have a few seconds to start thinking...");
-        Thread.Sleep(5000);
+        base.RunAnimation(5);
         Console.WriteLine("Now, start listing!");
-        Console.Write(">");
-        string _LhListingInput = Console.ReadLine();
+        do
+        {
+            Console.Write(">");
+            string _LhListingInput = Console.ReadLine();
+            // Append the user input to the StringBuilder object
+            LhString.AppendLine(_LhListingInput);
+        } while (running);
         Console.Clear();
-        Console.WriteLine(_LhListingInput);
+        Console.WriteLine(LhString.ToString());
+    }
+    public void EndListingActivity()
+    {
+        base.EndingMessage();
     }
 }
