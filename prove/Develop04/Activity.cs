@@ -1,6 +1,8 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.Design;
+using System.Collections.Generic;
+using System.Threading;
 
 class Activity 
 {
@@ -45,6 +47,20 @@ class Activity
     // {
     //     return _LhActivityAnimation;
     // }
+    public void RunActivity()
+    {
+        // bool LhDuration = SetDuration();
+        StartingMessage();
+        // if (_LhActivityPrompt != null){
+        //     Console.WriteLine("Here is your prompt:");
+        // }
+        // while(LhDuration == true)
+        // {
+        //     //activty loop
+        // }
+        //logic for activities that could call each activity
+        EndingMessage();
+    }
 
     //Starting method that need to run at the beginning of each specified activity
     public void StartingMessage()
@@ -75,6 +91,7 @@ class Activity
         // Use TimeSpan.FromMinutes to convert the user input to seconds
         TimeSpan LhDuration = TimeSpan.FromMinutes(LhTimeInput);
         bool LhDurationBool;
+
         // Use a condition to check if the current time is less than the start time plus the duration
         if (DateTime.UtcNow < LhStartTime + LhDuration)
         {
@@ -137,20 +154,6 @@ class Activity
     }
 
     //this function should contain all the logic to run each activity
-    public void RunActivity()
-    {
-        bool LhDuration = SetDuration();
-        StartingMessage();
-        if (_LhActivityPrompt != null){
-            Console.WriteLine("Here is your prompt:");
-        }
-        while(LhDuration == true)
-        {
-            //activty loop
-        }
-        //logic for activities that could call each activity
-        EndingMessage();
-    }
 
 
     //this function gets a random number to choose reflections prompt and listings prompt at random

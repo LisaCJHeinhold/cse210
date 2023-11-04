@@ -9,7 +9,14 @@ class Listing : Activity
     //listing constructor
     public Listing (string LhActivityName, string LhActivtyDescription, int LhActivityDuration, List<string> LhActivityPrompt, string LhListingInput) : base (LhActivityName, LhActivtyDescription, LhActivityDuration, LhActivityPrompt)
     {
-        _LhActivityPrompt = LhActivityPrompt;
+        _LhActivityPrompt = new List<string> 
+        {
+            "Who are people that you appreciate?",
+            "What are personal strengths of yours?",
+            "Who are people that you have helped this week?",
+            "When have you felt the Holy Ghost this month?",
+            "Who are some of your personal heroes?"
+        };
         _LhListingInput = LhListingInput;
     }
 

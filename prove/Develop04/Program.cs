@@ -27,24 +27,56 @@ class Program
     }
     static void Main(string[] args)
     {
-        bool end = true;
-        int LhUserChoice = GetUserChoice();
-        do {
-            //depending on which activity the user wants to complete run the specific logic for that activty
-            if (LhUserChoice == 1) {
+        // bool end = true;
+        // int LhUserChoice = GetUserChoice();
+        // do {
+        //     //depending on which activity the user wants to complete run the specific logic for that activty
+        //     if (LhUserChoice == 1) {
                 
-            }
-            else if (LhUserChoice == 2) {
+        //     }
+        //     else if (LhUserChoice == 2) {
                 
-            }
-            else if (LhUserChoice == 3) {
+        //     }
+        //     else if (LhUserChoice == 3) {
                 
 
-            }
+        //     }
 
-            end = End();
-        } while (end == true);
+        //     end = End();
+        // } while (end == true);
+         while (true)
+        {
+            Menu();
+            int choice = GetUserChoice();
+            if (choice == 0) break;
+
+            RunActivity(choice);
+            End();
+        }
     }
+    static void RunActivity(int choice)
+    {
+        Activity activity = null;
+
+        switch (choice)
+        {
+            case 1:
+                activity = new Breathing("Breathing", "This activity will help you relax by walking you through breathing in and out slowly. Clear your mind and focus on your breathing.", 0, new List<string> { "|", "/", "-", "\\" }, "Inhale", "Exhale", 3);
+                break;
+            case 2:
+                activity = new Reflection("Reflection", "This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.", 0, new List<string>(), new List<string>());
+                break;
+            case 3:
+                activity = new Listing("Listing", "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.", 0, new List<string>(), "List things that make you happy");
+                break;
+            default:
+                Console.WriteLine("Invalid choice. Please try again.");
+                return;
+        }
+
+        activity.RunActivity();
+    }
+
     static void Menu()
     {
         // print this menu when the program first runs so the user can choose which activity they want to do.
