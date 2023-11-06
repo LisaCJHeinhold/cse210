@@ -80,44 +80,44 @@ class Activity
     }
 
 // Define a flag variable to control the loop
-protected bool running;
+protected bool LhRunning;
 
 // Define the event handler for the timer
 private void Timer_Elapsed(object sender, ElapsedEventArgs e)
 {
     // Set the flag to false when the timer expires
-    running = false;
+    LhRunning = false;
 }
     
     //this creates the animation that will run at the beginning and end of all the activitys
     public void RunAnimation(int time)
     {
 
-        List<string> animationStrings = new List<string>();
-        animationStrings.Add("|");
-        animationStrings.Add("/");
-        animationStrings.Add("-");
-        animationStrings.Add("\\");
-        animationStrings.Add("|");
-        animationStrings.Add("/");
-        animationStrings.Add("-");
-        animationStrings.Add("\\");
+        List<string> LhAnimationStrings = new List<string>();
+        LhAnimationStrings.Add("|");
+        LhAnimationStrings.Add("/");
+        LhAnimationStrings.Add("-");
+        LhAnimationStrings.Add("\\");
+        LhAnimationStrings.Add("|");
+        LhAnimationStrings.Add("/");
+        LhAnimationStrings.Add("-");
+        LhAnimationStrings.Add("\\");
 
-        DateTime startTime = DateTime.Now;
-        DateTime endTime = startTime.AddSeconds(time);
+        DateTime LhStartTime = DateTime.Now;
+        DateTime LhEndTime = LhStartTime.AddSeconds(time);
 
         int i = 0;
 
-        while (DateTime.Now < endTime)
+        while (DateTime.Now < LhEndTime)
         {
-            string s = animationStrings[i];
+            string s = LhAnimationStrings[i];
             Console.Write(s);
             Thread.Sleep(100);
             Console.Write("\b \b");
             
             i++;
 
-            if (i >= animationStrings.Count)
+            if (i >= LhAnimationStrings.Count)
             {
                 i = 0;
             }

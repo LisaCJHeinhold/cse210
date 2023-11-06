@@ -30,7 +30,7 @@ class Listing : Activity
         // Create a StringBuilder object to store the user input
         StringBuilder LhString = new StringBuilder();
         //Logic
-        running = true;
+        LhRunning = true;
         Console.WriteLine($"Prompt: {_LhActivityPrompt[i]}");
         Console.WriteLine("You have a few seconds to start thinking...");
         base.RunAnimation(5);
@@ -41,7 +41,7 @@ class Listing : Activity
             string _LhListingInput = Console.ReadLine();
             // Append the user input to the StringBuilder object
             LhString.AppendLine(_LhListingInput);
-        } while (running);
+        } while (LhRunning);
         Console.Clear();
         Console.WriteLine(LhString.ToString());
     }

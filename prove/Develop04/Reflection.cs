@@ -35,20 +35,20 @@ class Reflection : Activity
         base.StartingMessage();
         base.SetDuration();
         //Logic
-        running = true;
+        LhRunning = true;
         do
         {
             int i = GetRandomNumber(3);
             Console.WriteLine($"Prompt: {_LhActivityPrompt[i]}");
             Console.WriteLine("Press enter to continue");
             Console.ReadLine();
-            foreach (string question in _LhQuestions)
+            foreach (string LhQuestion in _LhQuestions)
                 {
-                    Console.WriteLine(question);
+                    Console.WriteLine(LhQuestion);
                     Console.WriteLine("Press enter to continue");
                     Console.ReadLine();
                 }
-        } while (running);
+        } while (LhRunning);
     }
     public void EndReflectionActivity()
     {

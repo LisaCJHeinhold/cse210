@@ -23,7 +23,7 @@ class Breathing : Activity
         base.SetDuration();
         SetPause();
         // Set running to true before entering the loop
-        running = true;
+        LhRunning = true;
         do
         {
             Console.WriteLine($"{_LhBreathIn}...");
@@ -31,7 +31,7 @@ class Breathing : Activity
             CountDown();
             Console.WriteLine($"{_LhBreathOut}...");
             CountDown();
-        } while (running);
+        } while (LhRunning);
     }
     public void EndBreathingActivity()
     {
