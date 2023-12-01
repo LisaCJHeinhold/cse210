@@ -1,16 +1,43 @@
-// Lisa Heinhold
-// 12/9/2023
-// Description: This is the main program for the FinalProject. This project is a Personality Quiz
-// that will ask the user a series of questions and then give them a result based on their answers.
-
 using System;
+using System.Collections.Generic;
 
 class Program
 {
     static void Main(string[] args)
     {
-        
+        //call starting message
+        StartingMessage();
+
+        // Create instances of different question types
+        MultipleChoice lhMcQuestion = new MultipleChoice("Multiple Choice", new List<string> { "In social situations, do you usually:" }, "Select one:", new List<string> { "Initiate conversations", "Wait for others to initiate conversations", "Avoid conversation", "Talk to as many people as possible" });
+        lhMcQuestion.DisplayQuestion();
+        lhMcQuestion.GetUserResponse();
+        Console.Clear();
+        TrueFalse lhTfQuestion = new TrueFalse("True False", new List<string> { "I enjoy attending large social gatherings." }, "Is this statement true (1) or false (0)?", new List<string>());
+        lhTfQuestion.DisplayQuestion();
+        lhTfQuestion.GetUserResponse();
+        Console.Clear();
+        Range lhRangeQuestion = new Range("Range", new List<string> { "On a scale from 1 to 4, how much do you enjoy spending time alone?" }, "Choose your preference:", new List<string>());
+        lhRangeQuestion.DisplayQuestion();
+        lhRangeQuestion.GetUserResponse();
+        Console.Clear();
+        MultipleResponse lhMrQuestion = new MultipleResponse("Multiple Response", new List<string> { "Choose the activities you find relaxing:" }, "Choose one or more:", new List<string> { "Attending parties", "Reading a book", "Going for a walk", "Meditating" });
+        lhMrQuestion.DisplayQuestion();
+        lhMrQuestion.GetUserResponse();
+        Console.Clear();
+        YesNoMaybe lhYnmQuestion = new YesNoMaybe("Yes No Maybe", new List<string> { "Can you easily adapt to new environments?" }, "Answer (Yes = 1, No = 2, Maybe = 3):", new List<string>());
+        lhYnmQuestion.DisplayQuestion();
+        lhYnmQuestion.GetUserResponse();
+        Console.Clear();
+
+        // Display ending message and calculate result
+        List<Question> lhQuestions = new List<Question> { lhMcQuestion, lhTfQuestion, lhRangeQuestion, lhMrQuestion, lhYnmQuestion };
+        Result.CalculatePersonality(lhQuestions);
+        EndingMessage();
+
+        Console.ReadLine();
     }
+
     static void StartingMessage()
     {
         Console.WriteLine("Welcome to the Personality Quiz!");
@@ -19,10 +46,10 @@ class Program
         Console.WriteLine("Press enter to continue.");
         Console.ReadLine();
     }
+
     static void EndingMessage()
     {
         Console.WriteLine("Thank you for taking the Personality Quiz!");
         Console.WriteLine("Press enter to exit.");
-        Console.ReadLine();
     }
 }

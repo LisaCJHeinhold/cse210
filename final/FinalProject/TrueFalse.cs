@@ -1,10 +1,32 @@
-// this is the class for true or false questions
-
 class TrueFalse : Question
 {
-    string _lhUserChoice;
-    public TrueFalse(string _lhUserChoice, string lhQuestionType, List<string> lhQuestionText, string lhInstructions, List<string> lhAnswerOptions) : base(lhQuestionType, lhQuestionText, lhInstructions, lhAnswerOptions)
+    bool _lhUserChoice;
+
+    public TrueFalse(string lhQuestionType, List<string> lhQuestionText, string lhInstructions, List<string> lhAnswerOptions)
+        : base(lhQuestionType, lhQuestionText, lhInstructions, lhAnswerOptions)
     {
-        _lhUserChoice = "";
+        _lhUserChoice = false;
+    }
+
+    public override void GetUserResponse()
+    {
+        // DisplayQuestion();
+
+        // Get user response
+        Console.Write("Enter your choice (1 or 2): ");
+        int lhChoice;
+        //create a loop that keeps asking for input until the user enters a valid number
+        while (!int.TryParse(Console.ReadLine(), out lhChoice) || lhChoice < 1 || lhChoice > 2)
+        {
+            Console.Write("Invalid input. Please enter 1 for True or 2 for False: ");
+        }
+        //if the user enters 1, the user choice is true. Otherwise, it is false.
+        _lhUserChoice = lhChoice == 1;
+        Console.WriteLine(_lhUserChoice);
+    }
+
+    public bool GetUserChoice()
+    {
+        return _lhUserChoice;
     }
 }
