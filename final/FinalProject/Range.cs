@@ -8,7 +8,7 @@ class Range : Question
         _lhUserChoice = 0;
     }
 
-    public override void GetUserResponse()
+    public override void LhGetUserResponse()
     {
         // DisplayQuestion();
 
@@ -24,7 +24,7 @@ class Range : Question
         _lhUserChoice = lhChoice;
     }
 
-    public int GetUserChoice()
+    public int LhGetUserChoice()
     {
         return _lhUserChoice;
     }

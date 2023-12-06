@@ -8,7 +8,7 @@ class TrueFalse : Question
         _lhUserChoice = false;
     }
 
-    public override void GetUserResponse()
+    public override void LhGetUserResponse()
     {
         // DisplayQuestion();
 
@@ -25,7 +25,7 @@ class TrueFalse : Question
         Console.WriteLine(_lhUserChoice);
     }
 
-    public bool GetUserChoice()
+    public bool LhGetUserChoice()
     {
         return _lhUserChoice;
     }

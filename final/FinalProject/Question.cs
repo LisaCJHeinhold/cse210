@@ -16,9 +16,9 @@ abstract class Question
         _lhAnswerOptions = lhAnswerOptions;
     }
 
-    public abstract void GetUserResponse();
+    public abstract void LhGetUserResponse();
 
-    public void DisplayQuestion()
+    public void LhDisplayQuestion()
     {
         // Display question text
         Console.WriteLine(_lhQuestionText[0]);

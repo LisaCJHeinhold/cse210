@@ -8,7 +8,7 @@ class MultipleChoice : Question
         _lhUserChoice = "";
     }
 
-    public override void GetUserResponse()
+    public override void LhGetUserResponse()
     {
         // DisplayQuestion();
 
@@ -24,7 +24,7 @@ class MultipleChoice : Question
         _lhUserChoice = _lhAnswerOptions[lhChoice - 1];
     }
 
-    public string GetUserChoice()
+    public string LhGetUserChoice()
     {
         return _lhUserChoice;
     }

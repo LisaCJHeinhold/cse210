@@ -8,7 +8,7 @@ class MultipleResponse : Question
         _lhUserChoice = new List<string>();
     }
 
-    public override void GetUserResponse()
+    public override void LhGetUserResponse()
     {
         // DisplayQuestion();
 
@@ -27,7 +27,7 @@ class MultipleResponse : Question
         }
     }
 
-    public List<string> GetUserChoice()
+    public List<string> LhGetUserChoice()
     {
         return _lhUserChoice;
     }

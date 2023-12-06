@@ -8,7 +8,7 @@ class YesNoMaybe : Question
         _lhUserChoice = "";
     }
 
-    public override void GetUserResponse()
+    public override void LhGetUserResponse()
     {
         // DisplayQuestion();
 
@@ -35,7 +35,7 @@ class YesNoMaybe : Question
         }
     }
 
-    public string GetUserChoice()
+    public string LhGetUserChoice()
     {
         return _lhUserChoice;
     }
